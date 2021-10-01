@@ -1,10 +1,9 @@
 import React,{useState} from 'react';
-import Navbar from './componentss/Navbar';
-import Series from './componentss/Series';
-import Imagem from './componentss/Imagem'
+import Navbar from './components/Navbar';
+import Series from './components/Series';
+import Imagem from './components/Imagem'
 
 // para importar a função diretamente você usa as {} e exporta diretamente da linha do Function Component
-import Sobre from './componentss/Sobre';
 
 function App() {
 
