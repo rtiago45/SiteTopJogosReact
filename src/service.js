@@ -22,7 +22,21 @@ const service = {
             }
         ];
         return list;
-    }
+    },
+
+    onclickImg(e) {
+        e.preventDefault();
+        localStorage.setItem('src', e.target.src);
+        localStorage.setItem('name', e.target.name);
+        localStorage.setItem('index', e.target.id);
+        if (document.getElementById('sobre').offsetParent === null) {
+            document.getElementById('game').hidden="true";
+            document.getElementById('sobre').removeAttribute('hidden');
+        } else {
+            document.getElementById('game').removeAttribute('hidden');
+            document.getElementById('sobre').hidden="true";
+        }
+    },
 
 }
 

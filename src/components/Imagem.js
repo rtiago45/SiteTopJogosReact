@@ -1,13 +1,3 @@
-import React, { useState } from "react";
-import Imagem from './imagens/Tlou2.jpg'
-import Imagem2 from './imagens/Horizon.jpg'
-import Imagem3 from './imagens/MonsterHunter.jpg'
-import Imagem4 from './imagens/Uncharted.jpg'
-import Imagem5 from './imagens/Gow.jpg'
-import Imagem6 from './imagens/Readdead.jpg'
-import Imagem7 from './imagens/Witcher.jpg'
-import Imagem8 from './imagens/Valorant.jpg'
-import Imagem9 from './imagens/Cod.jpg'
 import Modal from 'react-modal';
 import service from '../service'
 
@@ -16,10 +6,12 @@ Modal.setAppElement('#root')
 
 function ImagensTelaPrincipal() {
 
-    const [modalIsOpen, setmodalIsOpen] = useState(false);
+    // const [modalIsOpen, setmodalIsOpen] = useState(false);
 
     const list = service.games();
-
+    const src = localStorage.getItem('src');
+    const name = localStorage.getItem('name');
+    const index = localStorage.getItem('index');
 
     return (
         <div className="row" id="game-selected">
@@ -29,7 +21,7 @@ function ImagensTelaPrincipal() {
                         return name;
                     })
                     return (
-                        <div className="row">
+                        <div className="row" id="game">
                             {
                                 item.src.map((src, i) => {
                                     return (
@@ -37,7 +29,7 @@ function ImagensTelaPrincipal() {
                                             <h4 className="p-3">{[names[i]]}</h4>
                                             <div className="pb-5">
                                                 <a className="thumbnail">
-                                                    <img className="img-fluid img-thumbnail" src={src}></img>
+                                                    <img onClick={service.onclickImg} name={[names[i]]} id={i} className="img-fluid img-thumbnail" src={src}></img>
                                                 </a>
                                             </div>
                                         </div>
@@ -49,6 +41,17 @@ function ImagensTelaPrincipal() {
                     )
                 })
             }
+            <div id="sobre" hidden>
+                <h4 className="p-3">{name}</h4>
+                <img className="img-fluid img-thumbnail" src={src} />
+                <h4 className="p-3">Sobre</h4>
+                <p>LEIAAAAAA:
+                    Inserir texto no service e depois recuperar com o index, para imagem trocar em tempo de execução precisa implmentar
+                    o router para que ele atualize a pagina ai sim vai atualizar a imagem em tela quando clicar, enquanto não fizer isso
+                    quando clicar a imagem ainda vai se manter a mesma a não ser que selecione uma imagem duas vezes seguidas, recarregando
+                    clicando recarregando e clicando
+                </p>
+            </div>
         </div>
     );
 }
